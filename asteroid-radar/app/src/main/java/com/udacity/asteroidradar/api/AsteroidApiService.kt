@@ -13,9 +13,6 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 
-private const val API_KEY = "vc3b29dyZc3DGUd1dX65sfRgPPpnYxOjbLiWGqHy"
-
-
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
     .build()
@@ -30,10 +27,10 @@ interface AsteroidApiService {
     @GET("neo/rest/v1/feed")
     suspend fun getAsteroidResponse(@Query("start_date") startDate:String,
                                     @Query("end_date") endDate: String,
-                                    @Query("api_key") key: String= API_KEY): ResponseBody
+                                    @Query("api_key") key: String = Constants.API_KEY): ResponseBody
 
     @GET("planetary/apod")
-    suspend fun getImageOfDay(@Query("api_key") key: String= API_KEY): PictureOfDay
+    suspend fun getImageOfDay(@Query("api_key") key: String = Constants.API_KEY): PictureOfDay
 
 }
 
